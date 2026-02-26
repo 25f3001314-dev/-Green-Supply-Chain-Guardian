@@ -1,0 +1,121 @@
+/* Suppliers Page Styles */
+.supplier-card {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.supplier-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.supplier-name {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semibold);
+}
+
+.supplier-location {
+    font-size: var(--fs-xs);
+    color: var(--text-tertiary);
+}
+
+.supplier-esg {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.esg-ring {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: conic-gradient(var(--esg-color) var(--esg-pct), var(--neutral-200) var(--esg-pct));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.esg-ring::before {
+    content: '';
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+}
+
+.esg-value {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-display);
+    font-weight: var(--fw-extrabold);
+    font-size: var(--fs-base);
+    color: var(--text-primary);
+}
+
+.esg-details {
+    flex: 1;
+}
+
+.esg-label {
+    font-size: var(--fs-xs);
+    color: var(--text-tertiary);
+    display: block;
+    margin-bottom: var(--space-1);
+}
+
+.esg-bar-track {
+    height: 6px;
+    background: var(--neutral-200);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.esg-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.8s ease-out;
+}
+
+.supplier-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+}
+
+.supplier-meta-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wider);
+    font-weight: var(--fw-medium);
+}
+
+.meta-value {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    color: var(--text-secondary);
+}
+
+.supplier-certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+}
+
+.supplier-actions {
+    display: flex;
+    gap: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border-light);
+}

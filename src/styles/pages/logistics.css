@@ -1,0 +1,35 @@
+/* Logistics Page Styles */
+.map-placeholder {
+    position: relative;
+}
+
+.map-bg {
+    position: relative;
+    min-height: 200px;
+    background: var(--neutral-50);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+}
+
+.map-dots {
+    position: absolute;
+    inset: 0;
+}
+
+.map-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--primary-500);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+.map-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid var(--primary-300);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}

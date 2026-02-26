@@ -1,0 +1,42 @@
+/* Reports Page Styles */
+.audit-trail {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.audit-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: center;
+}
+
+.audit-item:last-child {
+    border-bottom: none;
+}
+
+.audit-date {
+    font-size: var(--fs-xs);
+    color: var(--text-tertiary);
+    font-weight: var(--fw-medium);
+}
+
+.audit-event {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+}
+
+.audit-user {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-align: right;
+}
+
+@media (max-width: 640px) {
+    .audit-item {
+        grid-template-columns: 1fr;
+    }
+}
