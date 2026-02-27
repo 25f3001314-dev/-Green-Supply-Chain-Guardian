@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/🌍_Impact-400M+_Workers-0d9488?style=for-the-badge" />
 </p>
 
-<h1 align="center">🌿 Green Supply Chain Guardian</h1>
+<h1 align="center">🌿 Green Supply Chain Guardian!</h1>
 
 <h3 align="center">
   Real-Time Carbon & Compliance Intelligence for Indian MSMEs<br/>
