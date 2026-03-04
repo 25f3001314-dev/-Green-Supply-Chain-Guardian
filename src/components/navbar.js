@@ -2,6 +2,8 @@
 // NAVBAR — Sidebar Navigation Component
 // ============================================
 import { user } from '../data/mockData.js';
+import { store, loadSettings } from '../data/simulationEngine.js';
+import { openNotificationPanel, updateNotifBadge } from './notification.js';
 
 const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>` },
@@ -13,6 +15,13 @@ const navItems = [
 ];
 
 export function renderNavbar(currentPage) {
+    const state = store.get();
+    const notifCount = state?.notificationCount ?? 0;
+    const settings = loadSettings();
+    const profileName = settings.name || user.name;
+    const profileRole = settings.role || user.role;
+    const initials = profileName.split(' ').map(w => w[0]).join('');
+
     return `
     <nav class="sidebar" id="sidebar">
       <div class="sidebar-brand">
@@ -22,6 +31,17 @@ export function renderNavbar(currentPage) {
             <span class="logo-title">GSCG</span>
             <span class="logo-subtitle">Supply Chain Guardian</span>
           </div>
+        </div>
+        <div style="display:flex;gap:4px;margin-left:auto">
+          <!-- Notification Bell -->
+          <button id="notifBellBtn" title="Notifications" style="position:relative;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;color:var(--text-secondary);transition:background 0.15s" aria-label="Notifications">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-badge" style="display:${notifCount > 0 ? 'flex' : 'none'}">${notifCount > 99 ? '99+' : notifCount}</span>
+          </button>
+          <!-- Dark mode quick toggle -->
+          <button id="darkModeQuickBtn" title="Toggle Dark Mode" style="background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;color:var(--text-secondary);transition:background 0.15s" aria-label="Toggle dark mode">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
         </div>
       </div>
 
@@ -36,11 +56,12 @@ export function renderNavbar(currentPage) {
       </div>
 
       <div class="sidebar-footer">
-        <div class="sidebar-user">
-          <div class="user-avatar">${user.avatar}</div>
+        <div style="font-size:9px;color:var(--text-tertiary);padding:0 var(--space-4) 4px;letter-spacing:0.04em">KEYBOARD: 1-6 for pages • Ctrl+K search</div>
+        <div class="sidebar-user" onclick="location.hash='settings'">
+          <div class="user-avatar">${initials}</div>
           <div class="user-info">
-            <span class="user-name">${user.name}</span>
-            <span class="user-role">${user.role}</span>
+            <span class="user-name">${profileName}</span>
+            <span class="user-role">${profileRole}</span>
           </div>
         </div>
       </div>
@@ -55,13 +76,18 @@ export function getNavbarStyles() {
     return `
     <style>
       .sidebar-brand {
-        padding: var(--space-6);
+        padding: var(--space-4) var(--space-4) var(--space-4) var(--space-6);
         border-bottom: 1px solid var(--border-light);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
       }
       .sidebar-logo {
         display: flex;
         align-items: center;
         gap: var(--space-3);
+        flex: 1;
+        min-width: 0;
       }
       .logo-icon {
         font-size: 28px;
@@ -203,4 +229,30 @@ export function initNavbar() {
             overlay.classList.remove('active');
         });
     }
+
+    // Notification bell
+    document.getElementById('notifBellBtn')?.addEventListener('click', () => {
+        openNotificationPanel();
+    });
+
+    // Dark mode quick toggle
+    document.getElementById('darkModeQuickBtn')?.addEventListener('click', () => {
+        const isDark = document.documentElement.hasAttribute('data-theme');
+        if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        const { saveSettings, loadSettings } = window._gscg || {};
+        if (saveSettings && loadSettings) {
+            const s = loadSettings();
+            saveSettings({ ...s, darkMode: !isDark });
+        }
+    });
+
+    // Update notification badge from simulation events
+    document.addEventListener('gscg:activity', () => {
+        const state = store.get();
+        if (state) updateNotifBadge(state.notificationCount);
+    });
 }

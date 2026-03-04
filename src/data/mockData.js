@@ -75,6 +75,19 @@ export const suppliers = [
     { id: 10, name: 'RecycleMax Partners', location: 'Toronto, Canada', category: 'Waste Management', esg: 90, risk: 'Low', certifications: ['Zero Waste', 'B Corp'], status: 'Active', carbonIntensity: 11.7, lastAudit: '2025-11-15' },
     { id: 11, name: 'FairTrade Cotton Co.', location: 'Nairobi, Kenya', category: 'Textiles', esg: 87, risk: 'Medium', certifications: ['Fairtrade', 'GOTS'], status: 'Active', carbonIntensity: 19.8, lastAudit: '2025-09-15' },
     { id: 12, name: 'PetroChem Legacy', location: 'Houston, USA', category: 'Chemicals', esg: 58, risk: 'Critical', certifications: ['ISO 14001'], status: 'Flagged', carbonIntensity: 89.2, lastAudit: '2025-06-01' },
+    { id: 13, name: 'AlpineCircuit Tech', location: 'Zurich, Switzerland', category: 'Electronics', esg: 89, risk: 'Low', certifications: ['ISO 14001', 'RoHS', 'EPEAT'], status: 'Active', carbonIntensity: 23.4, lastAudit: '2025-11-28' },
+    { id: 14, name: 'SunHarvest Agri', location: 'Valencia, Spain', category: 'Agriculture', esg: 92, risk: 'Low', certifications: ['Rainforest Alliance', 'Fairtrade', 'Organic'], status: 'Active', carbonIntensity: 9.6, lastAudit: '2025-12-10' },
+    { id: 15, name: 'BlueOcean Shipping', location: 'Rotterdam, Netherlands', category: 'Logistics', esg: 76, risk: 'Medium', certifications: ['ISO 14001', 'MARPOL'], status: 'Active', carbonIntensity: 41.8, lastAudit: '2025-10-18' },
+    { id: 16, name: 'TerraForm Plastics', location: 'Seoul, South Korea', category: 'Packaging', esg: 71, risk: 'High', certifications: ['ISO 14001'], status: 'Under Review', carbonIntensity: 58.9, lastAudit: '2025-08-05' },
+    { id: 17, name: 'WindPower Components', location: 'Aarhus, Denmark', category: 'Energy', esg: 97, risk: 'Low', certifications: ['ISO 14001', 'WindEurope', 'B Corp'], status: 'Active', carbonIntensity: 4.1, lastAudit: '2025-12-20' },
+    { id: 18, name: 'GreenMine Cobalt', location: 'Lusaka, Zambia', category: 'Metals', esg: 68, risk: 'High', certifications: ['RMI', 'ISO 14001'], status: 'Under Review', carbonIntensity: 72.3, lastAudit: '2025-07-14' },
+    { id: 19, name: 'BioPlastic Innovate', location: 'Utrecht, Netherlands', category: 'Packaging', esg: 95, risk: 'Low', certifications: ['Cradle2Cradle', 'TUV OK Biobased', 'ISO 14001'], status: 'Active', carbonIntensity: 7.8, lastAudit: '2025-12-05' },
+    { id: 20, name: 'SilkRoute Textiles', location: 'Dhaka, Bangladesh', category: 'Textiles', esg: 63, risk: 'High', certifications: ['OEKO-TEX'], status: 'Under Review', carbonIntensity: 55.2, lastAudit: '2025-09-01' },
+    { id: 21, name: 'EastAsia Electronics', location: 'Shenzhen, China', category: 'Electronics', esg: 72, risk: 'Medium', certifications: ['ISO 14001', 'RoHS'], status: 'Active', carbonIntensity: 47.3, lastAudit: '2025-10-12' },
+    { id: 22, name: 'IberWood Sustainable', location: 'Lisbon, Portugal', category: 'Raw Materials', esg: 90, risk: 'Low', certifications: ['FSC', 'PEFC'], status: 'Active', carbonIntensity: 10.2, lastAudit: '2025-11-22' },
+    { id: 23, name: 'CarbonZero Cement', location: 'Düsseldorf, Germany', category: 'Construction', esg: 81, risk: 'Medium', certifications: ['ISO 14001', 'EPD', 'EC3'], status: 'Active', carbonIntensity: 52.7, lastAudit: '2025-09-20' },
+    { id: 24, name: 'ArcticFreight Rail', location: 'Stockholm, Sweden', category: 'Logistics', esg: 91, risk: 'Low', certifications: ['SmartWay', 'ISO 50001'], status: 'Active', carbonIntensity: 6.3, lastAudit: '2025-12-08' },
+    { id: 25, name: 'PacificGrow Foods', location: 'Auckland, New Zealand', category: 'Agriculture', esg: 88, risk: 'Low', certifications: ['Organic', 'Rainforest Alliance', 'B Corp'], status: 'Active', carbonIntensity: 14.7, lastAudit: '2025-11-05' },
 ];
 
 export const shipments = [
@@ -171,3 +184,60 @@ export const testimonials = [
     { quote: "The compliance automation alone saved our team 200+ hours per quarter. We went from struggling with CSRD to being fully compliant.", author: 'Priya Sharma', role: 'Chief Sustainability Officer, TechNova', avatar: 'PS' },
     { quote: "Finally, a platform that makes supply chain sustainability actionable, not just measurable. The ROI was evident within 3 months.", author: 'James O\'Brien', role: 'Director of Operations, GreenRetail Co.', avatar: 'JO' },
 ];
+
+// ── Historical Data (2 years monthly) ──
+export const historicalEmissions = {
+    labels: ['Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24',
+             'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25', 'Oct 25', 'Nov 25', 'Dec 25'],
+    scope1: [510, 495, 480, 460, 440, 420, 410, 395, 380, 365, 350, 335,
+             420, 390, 410, 380, 360, 340, 330, 310, 290, 280, 260, 245],
+    scope2: [820, 795, 775, 750, 720, 695, 670, 645, 625, 600, 580, 560,
+             680, 650, 630, 610, 590, 560, 540, 520, 510, 490, 470, 450],
+    scope3: [1450, 1400, 1360, 1310, 1270, 1230, 1190, 1150, 1110, 1070, 1035, 1000,
+             1200, 1150, 1120, 1080, 1050, 1020, 980, 950, 920, 890, 860, 830],
+};
+
+// ── AI Emission Forecasts ──
+export const aiForecasts = {
+    labels: ['Jan 26', 'Feb 26', 'Mar 26', 'Apr 26', 'May 26', 'Jun 26'],
+    optimistic: [720, 690, 655, 620, 585, 555],
+    baseline: [760, 735, 705, 675, 645, 615],
+    pessimistic: [800, 780, 760, 745, 730, 715],
+    confidence: 87, // percent
+};
+
+// ── Weather Data ──
+export const weatherData = {
+    northAtlantic: { condition: 'Moderate Swells', windKnots: 22, seaState: 'Rough', delayRisk: 'Medium', affectedRoutes: ['SHP-2849', 'SHP-2854'] },
+    northSea: { condition: 'Clear', windKnots: 8, seaState: 'Calm', delayRisk: 'Low', affectedRoutes: [] },
+    mediterranean: { condition: 'Partly Cloudy', windKnots: 14, seaState: 'Slight', delayRisk: 'Low', affectedRoutes: [] },
+    pacificAsia: { condition: 'Tropical Storm Watch', windKnots: 35, seaState: 'Very Rough', delayRisk: 'High', affectedRoutes: ['SHP-2856'] },
+};
+
+// ── Emission Factors (kg CO₂e per tonne-km) ──
+export const emissionFactors = {
+    'Sea Freight': 0.008,
+    'Air Freight': 0.602,
+    'Rail': 0.028,
+    'Electric Truck': 0.050,
+    'Diesel Truck': 0.150,
+    'Hydrogen Truck': 0.035,
+    'River Barge': 0.031,
+    'Pipeline': 0.003,
+};
+
+// ── ESG Score History (last 6 months per supplier id) ──
+export const supplierESGHistory = {
+    1: [94, 95, 95, 96, 96, 96],
+    2: [89, 90, 91, 91, 91, 91],
+    3: [85, 86, 87, 88, 88, 88],
+    4: [83, 84, 84, 85, 85, 85],
+    5: [80, 81, 82, 82, 82, 82],
+    6: [78, 76, 75, 74, 74, 74],
+    7: [91, 92, 92, 93, 93, 93],
+    8: [93, 93, 94, 94, 94, 94],
+    9: [77, 78, 79, 79, 79, 79],
+    10: [88, 89, 90, 90, 90, 90],
+    11: [85, 86, 87, 87, 87, 87],
+    12: [62, 60, 59, 58, 58, 58],
+};
